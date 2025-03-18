@@ -14,7 +14,6 @@ import Head from "next/head";
 
 export default function Home() {
   const [upcomingContests, setUpcomingContests] = useState<Contest[]>([]);
-  const [pastWeekContests, setPastWeekContests] = useState<Contest[]>([]);
 
   useEffect(() => {
     const loadContests = async () => {
