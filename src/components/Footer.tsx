@@ -1,5 +1,5 @@
 import React from "react";
-import { BsSuitHeartFill, BsTwitterX } from "react-icons/bs";
+import { BsSuitHeartFill } from "react-icons/bs";
 
 const Footer = () => {
   return (
