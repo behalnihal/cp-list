@@ -9,14 +9,52 @@ export type Contest = {
   durationSeconds: number;
   startTimeSeconds?: number;
   relativeTimeSeconds?: number;
+  base_url: string;
+  site: string;
 };
 export async function GET() {
   try {
-    const response = await axios.get(
+    const codeforcesResponse = await axios.get(
       "https://codeforces.com/api/contest.list/"
     );
-    let contests: Contest[] = response.data.result;
-    contests = contests.filter((contest) => contest.phase === "BEFORE");
+    let codeforcesContests: Contest[] = codeforcesResponse.data.result.map(
+      (contest: any) => ({
+        id: contest.id,
+        name: contest.name,
+        type: contest.type,
+        phase: contest.phase,
+        frozen: contest.frozen,
+        durationSeconds: contest.durationSeconds,
+        startTimeSeconds: contest.startTimeSeconds,
+        relativeTimeSeconds: contest.relativeTimeSeconds,
+        base_url: "https://codeforces.com/contest",
+        site: "codeforces",
+      })
+    );
+    codeforcesContests = codeforcesContests.filter(
+      (contest) => contest.phase === "BEFORE"
+    );
+
+    const codechefResponse = await axios.get(
+      "https://www.codechef.com/api/list/contests/future/"
+    );
+    const codechefContests = codechefResponse.data.contests.map(
+      (contest: any) => ({
+        id: contest.contest_code,
+        name: contest.contest_name,
+        type: "codechef",
+        phase: "BEFORE",
+        frozen: false,
+        durationSeconds: contest.contest_duration * 60,
+        startTimeSeconds:
+          new Date(contest.contest_start_date_iso).getTime() / 1000,
+        relativeTimeSeconds: null,
+        base_url: "https://codechef.com",
+        site: "codechef",
+      })
+    );
+
+    const contests: Contest[] = [...codeforcesContests, ...codechefContests];
     return NextResponse.json({ contests: contests });
   } catch (error) {
     console.error(error);

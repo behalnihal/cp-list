@@ -1,5 +1,5 @@
 "use client";
-import { Coffee, Github, Moon, Sun } from "lucide-react";
+import { Coffee, Github, List, ListPlus, Moon, Sun } from "lucide-react";
 
 import { useTheme } from "next-themes";
 import Link from "next/link";
@@ -14,8 +14,21 @@ const Navbar = () => {
         {/* Logo */}
         <div className="font-bold text-2xl flex-1">
           <Link href="/" className="flex items-center">
+            <span className="mr-1 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600">
+              <List size={24} />
+            </span>
             <span className="inline bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 text-transparent bg-clip-text drop-shadow-lg">
               CP List
+            </span>
+          </Link>
+        </div>
+
+        {/* Practice  */}
+
+        <div className="font-bold text-2xl flex-1">
+          <Link href="/practice" className="flex items-center">
+            <span className="font-mono inline bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 text-transparent bg-clip-text drop-shadow-lg">
+              Practice
             </span>
           </Link>
         </div>

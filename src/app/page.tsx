@@ -8,19 +8,20 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/table";
-import { useEffect, useState } from "react";
+import { SiCodechef, SiCodeforces } from "react-icons/si";
 import { Contest } from "./api/contests/route";
-import Head from "next/head";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   const [upcomingContests, setUpcomingContests] = useState<Contest[]>([]);
-
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     const loadContests = async () => {
       fetch("/api/contests")
         .then((res) => res.json())
         .then((data) => {
           setUpcomingContests(data.contests);
+          setIsLoading(false);
         })
         .catch((error) => {
           console.error("Error loading contests", error);
@@ -53,13 +54,6 @@ export default function Home() {
   const date = now.toLocaleDateString();
   return (
     <>
-      <Head>
-        <title>CP List</title>
-        <meta
-          name="description"
-          content="Check out upcoming conding contests schedule"
-        />
-      </Head>
       <span className="text-sm">
         {day}, {date}
       </span>
@@ -69,47 +63,71 @@ export default function Home() {
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead>Title</TableHead>
-              <TableHead>Date</TableHead>
-              <TableHead>Start Time</TableHead>
-              <TableHead>End Time</TableHead>
+              <TableHead className="font-bold text-blue-500 text-xl">
+                Event
+              </TableHead>
+              <TableHead className="font-bold text-blue-500 text-xl">
+                Date
+              </TableHead>
+              <TableHead className="font-bold text-blue-500 text-xl">
+                Start Time
+              </TableHead>
+              <TableHead className="font-bold text-blue-500 text-xl">
+                End Time
+              </TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
-            {upcomingContests.map((contest) => (
-              <TableRow
-                key={contest.id}
-                className=" hover:bg-gray-700 transition-colors duration-300"
-              >
-                <TableCell>
-                  <a
-                    href={`https://codeforces.com/contest/${contest.id}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:underline"
-                  >
-                    {contest.name}
-                  </a>
-                </TableCell>
-                <TableCell>
-                  {contest.startTimeSeconds
-                    ? formatDate(contest.startTimeSeconds)
-                    : "NA"}
-                </TableCell>
-                <TableCell>
-                  {contest.startTimeSeconds
-                    ? formatTime(contest.startTimeSeconds)
-                    : "NA"}
-                </TableCell>
-                <TableCell>
-                  {contest.startTimeSeconds
-                    ? formatTime(
-                        contest.startTimeSeconds + contest.durationSeconds
-                      )
-                    : "NA"}
+            {isLoading ? (
+              <TableRow>
+                <TableCell
+                  colSpan={4}
+                  className="font-mono text-blue-400 text-center py-4"
+                >
+                  Loading events...
                 </TableCell>
               </TableRow>
-            ))}
+            ) : (
+              upcomingContests.map((contest: Contest) => (
+                <TableRow
+                  key={contest.id}
+                  className="hover:bg-gray-700 transition-colors duration-300"
+                >
+                  <TableCell>
+                    <a
+                      href={`${contest.base_url}/${contest.id}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:underline flex items-center space-x-2"
+                    >
+                      {contest.site === "codeforces" ? (
+                        <SiCodeforces />
+                      ) : (
+                        <SiCodechef />
+                      )}
+                      <span>{contest.name}</span>
+                    </a>
+                  </TableCell>
+                  <TableCell>
+                    {contest.startTimeSeconds
+                      ? formatDate(contest.startTimeSeconds)
+                      : "NA"}
+                  </TableCell>
+                  <TableCell>
+                    {contest.startTimeSeconds
+                      ? formatTime(contest.startTimeSeconds)
+                      : "NA"}
+                  </TableCell>
+                  <TableCell>
+                    {contest.startTimeSeconds
+                      ? formatTime(
+                          contest.startTimeSeconds + contest.durationSeconds
+                        )
+                      : "NA"}
+                  </TableCell>
+                </TableRow>
+              ))
+            )}
           </TableBody>
         </Table>
       </div>
