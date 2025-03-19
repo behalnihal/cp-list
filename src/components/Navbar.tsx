@@ -1,5 +1,5 @@
 "use client";
-import { Coffee, Github, List, ListPlus, Moon, Sun } from "lucide-react";
+import { Coffee, Github, List, Moon, Sun } from "lucide-react";
 
 import { useTheme } from "next-themes";
 import Link from "next/link";

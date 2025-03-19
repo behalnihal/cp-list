@@ -12,13 +12,24 @@ export type Contest = {
   base_url: string;
   site: string;
 };
+
+export interface Codechef {
+  contest_code: string;
+  contest_name: string;
+  contest_start_date: string;
+  contest_end_date: string;
+  contest_start_date_iso: string;
+  contest_end_date_iso: string;
+  contest_duration: number;
+  distinct_users: number;
+}
 export async function GET() {
   try {
     const codeforcesResponse = await axios.get(
       "https://codeforces.com/api/contest.list/"
     );
     let codeforcesContests: Contest[] = codeforcesResponse.data.result.map(
-      (contest: any) => ({
+      (contest: Contest) => ({
         id: contest.id,
         name: contest.name,
         type: contest.type,
@@ -39,7 +50,7 @@ export async function GET() {
       "https://www.codechef.com/api/list/contests/future/"
     );
     const codechefContests = codechefResponse.data.contests.map(
-      (contest: any) => ({
+      (contest: Codechef) => ({
         id: contest.contest_code,
         name: contest.contest_name,
         type: "codechef",
