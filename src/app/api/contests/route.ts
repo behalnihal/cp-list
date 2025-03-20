@@ -9,7 +9,7 @@ export type Contest = {
   durationSeconds: number;
   startTimeSeconds?: number;
   relativeTimeSeconds?: number;
-  base_url: string;
+  url: string;
   site: string;
 };
 
@@ -22,6 +22,13 @@ export interface Codechef {
   contest_end_date_iso: string;
   contest_duration: number;
   distinct_users: number;
+}
+
+export interface Leetcode {
+  title: string;
+  startTime: number;
+  duration: number;
+  titleSlug: string;
 }
 export async function GET() {
   try {
@@ -38,7 +45,7 @@ export async function GET() {
         durationSeconds: contest.durationSeconds,
         startTimeSeconds: contest.startTimeSeconds,
         relativeTimeSeconds: contest.relativeTimeSeconds,
-        base_url: "https://codeforces.com/contest",
+        url: `https://codeforces.com/contests/${contest.id}`,
         site: "codeforces",
       })
     );
@@ -60,12 +67,52 @@ export async function GET() {
         startTimeSeconds:
           new Date(contest.contest_start_date_iso).getTime() / 1000,
         relativeTimeSeconds: null,
-        base_url: "https://codechef.com",
+        url: `https://www.codechef.com/${contest.contest_code}`,
         site: "codechef",
       })
     );
 
-    const contests: Contest[] = [...codeforcesContests, ...codechefContests];
+    const leetcodeResponse = await axios.post(
+      "https://leetcode.com/graphql",
+      {
+        query: `
+      query getContestList {
+      allContests {
+      title
+      startTime
+      duration
+      titleSlug}}`,
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    const allContests = leetcodeResponse.data.data.allContests;
+    const now = Date.now();
+
+    const leetcodeContests = allContests
+      .filter((contest: Leetcode) => contest.startTime * 1000 > now)
+      .map((contest: Leetcode) => ({
+        id: contest.titleSlug,
+        name: contest.title,
+        type: "leetcode",
+        phase: "BEFORE",
+        frozen: false,
+        durationSeconds: contest.duration,
+        startTimeSeconds: contest.startTime,
+        relativeTimeSeconds: null,
+        url: `https://leetcode.com/contest/${contest.titleSlug}`,
+        site: "leetcode",
+      }));
+
+    const contests: Contest[] = [
+      ...codeforcesContests,
+      ...codechefContests,
+      ...leetcodeContests,
+    ];
     return NextResponse.json({ contests: contests });
   } catch (error) {
     console.error(error);

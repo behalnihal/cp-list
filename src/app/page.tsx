@@ -8,9 +8,9 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/table";
-import { SiCodechef, SiCodeforces } from "react-icons/si";
-import { Contest } from "./api/contests/route";
+import { SiCodechef, SiCodeforces, SiLeetcode } from "react-icons/si";
 import { useEffect, useState } from "react";
+import { Contest } from "./api/contests/route";
 
 export default function Home() {
   const [upcomingContests, setUpcomingContests] = useState<Contest[]>([]);
@@ -51,10 +51,14 @@ export default function Home() {
     "Saturday",
   ];
   const day = days[now.getDay()];
-  const date = now.toLocaleDateString();
+  const date = now.toLocaleDateString("en-US", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
   return (
     <>
-      <span className="text-sm">
+      <span className="text-sm font-mono text-green-400">
         {day}, {date}
       </span>
 
@@ -95,15 +99,17 @@ export default function Home() {
                 >
                   <TableCell>
                     <a
-                      href={`${contest.base_url}/${contest.id}`}
+                      href={contest.url}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="hover:underline flex items-center space-x-2"
                     >
                       {contest.site === "codeforces" ? (
-                        <SiCodeforces />
+                        <SiCodeforces className="h-6 w-6" />
+                      ) : contest.site === "codechef" ? (
+                        <SiCodechef className="h-6 w-6" />
                       ) : (
-                        <SiCodechef />
+                        <SiLeetcode className="h-6 w-6" />
                       )}
                       <span>{contest.name}</span>
                     </a>
