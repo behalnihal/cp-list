@@ -1,10 +1,9 @@
 "use client";
-import { Coffee, Github, List, Moon, Sun } from "lucide-react";
+import { List, Moon, Sun } from "lucide-react";
 
 import { useTheme } from "next-themes";
 import Link from "next/link";
 import React from "react";
-import { BsTwitterX } from "react-icons/bs";
 
 const Navbar = () => {
   const { theme, setTheme } = useTheme();
@@ -36,32 +35,6 @@ const Navbar = () => {
         {/* Buttons */}
 
         <div className="flex items-center space-x-4">
-          <Link
-            href="https://buymeacoffee.com/nihal_gupta"
-            className="flex items-center"
-          >
-            <span>
-              <Coffee className="transition-colors duration-300 hover:text-blue-500" />
-            </span>
-          </Link>
-          <Link
-            href="https://github.com/behalnihal"
-            className="flex items-center"
-          >
-            <span>
-              <Github className="transition-colors duration-300 hover:text-blue-500" />
-            </span>
-          </Link>
-          <Link
-            href="https://x.com/behalnihal"
-            target="_blank"
-            className="flex items-center"
-          >
-            <BsTwitterX
-              size={20}
-              className="transition-colors duration-300 hover:text-blue-500"
-            />
-          </Link>
           <button
             className="cursor-pointer"
             onClick={() =>

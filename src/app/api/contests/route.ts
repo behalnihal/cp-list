@@ -13,6 +13,18 @@ export type Contest = {
   site: string;
 };
 
+export interface Codeforces {
+  id: number;
+  name: string;
+  type: string;
+  phase: string;
+  frozen: boolean;
+  durationSeconds: number;
+  startTimeSeconds?: number;
+  relativeTimeSeconds?: number;
+  url: string;
+  site: string;
+}
 export interface Codechef {
   contest_code: string;
   contest_name: string;
@@ -35,8 +47,8 @@ export async function GET() {
     const codeforcesResponse = await axios.get(
       "https://codeforces.com/api/contest.list/"
     );
-    let codeforcesContests: Contest[] = codeforcesResponse.data.result.map(
-      (contest: Contest) => ({
+    let codeforcesContests: Codeforces[] = codeforcesResponse.data.result.map(
+      (contest: Codeforces) => ({
         id: contest.id,
         name: contest.name,
         type: contest.type,
@@ -113,6 +125,13 @@ export async function GET() {
       ...codechefContests,
       ...leetcodeContests,
     ];
+    contests.sort((a, b) => {
+      if (a.startTimeSeconds && b.startTimeSeconds) {
+        return a.startTimeSeconds - b.startTimeSeconds;
+      } else {
+        return 0;
+      }
+    });
     return NextResponse.json({ contests: contests });
   } catch (error) {
     console.error(error);
