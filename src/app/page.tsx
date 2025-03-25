@@ -1,5 +1,3 @@
-"use client";
-
 import {
   Table,
   TableBody,
@@ -9,26 +7,25 @@ import {
   TableRow,
 } from "@/components/table";
 import { SiCodechef, SiCodeforces, SiLeetcode } from "react-icons/si";
-import { useEffect, useState } from "react";
-import { Contest } from "./api/contests/route";
 
-export default function Home() {
-  const [upcomingContests, setUpcomingContests] = useState<Contest[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  useEffect(() => {
-    const loadContests = async () => {
-      fetch("/api/contests")
-        .then((res) => res.json())
-        .then((data) => {
-          setUpcomingContests(data.contests);
-          setIsLoading(false);
-        })
-        .catch((error) => {
-          console.error("Error loading contests", error);
-        });
-    };
-    loadContests();
-  }, []);
+import { Contest } from "./api/contests/route";
+import axios from "axios";
+
+async function getContests() {
+  try {
+    const response = axios.get(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/contests`
+    );
+    const result: Contest[] = (await response).data.contests;
+    return result;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+}
+
+export default async function Home() {
+  const upcomingContests: Contest[] = await getContests();
 
   const formatTime = (timeStamp: number) => {
     const date = new Date(timeStamp * 1000);
@@ -82,16 +79,7 @@ export default function Home() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {isLoading ? (
-              <TableRow>
-                <TableCell
-                  colSpan={4}
-                  className="font-mono text-blue-400 text-center py-4"
-                >
-                  Loading events...
-                </TableCell>
-              </TableRow>
-            ) : (
+            {upcomingContests &&
               upcomingContests.map((contest: Contest) => (
                 <TableRow
                   key={contest.id}
@@ -132,8 +120,7 @@ export default function Home() {
                       : "NA"}
                   </TableCell>
                 </TableRow>
-              ))
-            )}
+              ))}
           </TableBody>
         </Table>
       </div>
