@@ -83,7 +83,7 @@ export default async function Home() {
               upcomingContests.map((contest: Contest) => (
                 <TableRow
                   key={contest.id}
-                  className="hover:bg-gray-700 transition-colors duration-300"
+                  className=" transition-colors duration-300"
                 >
                   <TableCell>
                     <a
