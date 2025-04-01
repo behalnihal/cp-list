@@ -5,7 +5,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/table";
+} from "@/components/ui/table";
 import { SiCodechef, SiCodeforces, SiLeetcode } from "react-icons/si";
 
 import { Contest } from "./api/contests/route";
@@ -29,33 +29,37 @@ export default async function Home() {
 
   const formatTime = (timeStamp: number) => {
     const date = new Date(timeStamp * 1000);
-    const formattedTime = date.toLocaleTimeString();
+    const formattedTime = date.toLocaleTimeString("en-US", {
+      hour: "numeric",
+      minute: "numeric",
+      hour12: false,
+    });
     return formattedTime;
   };
   const formatDate = (timeStamp: number) => {
     const date = new Date(timeStamp * 1000);
-    const formattedDate = date.toLocaleDateString();
+    const formattedDate = date.toLocaleDateString("en-IN", {
+      day: "numeric",
+      month: "numeric",
+    });
     return formattedDate;
   };
   const now = new Date();
-  const days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
+  const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   const day = days[now.getDay()];
   const date = now.toLocaleDateString("en-US", {
     day: "numeric",
     month: "long",
     year: "numeric",
   });
+
+  const getDay = (timestamp: number) => {
+    const date = new Date(timestamp * 1000);
+    return days[date.getDay()];
+  };
   return (
     <>
-      <span className="text-sm font-mono text-green-400">
+      <span className="text-sm font-mono text-black dark:text-green-500">
         {day}, {date}
       </span>
 
@@ -68,13 +72,7 @@ export default async function Home() {
                 Event
               </TableHead>
               <TableHead className="font-bold text-blue-500 text-xl">
-                Date
-              </TableHead>
-              <TableHead className="font-bold text-blue-500 text-xl">
                 Start Time
-              </TableHead>
-              <TableHead className="font-bold text-blue-500 text-xl">
-                End Time
               </TableHead>
             </TableRow>
           </TableHeader>
@@ -102,21 +100,15 @@ export default async function Home() {
                       <span>{contest.name}</span>
                     </a>
                   </TableCell>
-                  <TableCell>
+                  <TableCell className="font-mono">
                     {contest.startTimeSeconds
                       ? formatDate(contest.startTimeSeconds)
-                      : "NA"}
-                  </TableCell>
-                  <TableCell>
+                      : ""}{" "}
+                    {contest.startTimeSeconds
+                      ? getDay(contest.startTimeSeconds)
+                      : ""}{" "}
                     {contest.startTimeSeconds
                       ? formatTime(contest.startTimeSeconds)
-                      : "NA"}
-                  </TableCell>
-                  <TableCell>
-                    {contest.startTimeSeconds
-                      ? formatTime(
-                          contest.startTimeSeconds + contest.durationSeconds
-                        )
                       : "NA"}
                   </TableCell>
                 </TableRow>
