@@ -19,7 +19,7 @@ import {
 } from "./ui/dropdown-menu";
 
 const Navbar = () => {
-  const { theme, setTheme } = useTheme();
+  const { setTheme } = useTheme();
   return (
     <div className="border-b">
       <div className="flex h-16 items-center px-4 container mx-auto">
