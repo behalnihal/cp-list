@@ -24,6 +24,8 @@ async function getContests() {
   }
 }
 
+export const revalidate = 60;
+
 export default async function Home() {
   const upcomingContests: Contest[] = await getContests();
 
