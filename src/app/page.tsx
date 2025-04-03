@@ -10,6 +10,7 @@ import { SiCodechef, SiCodeforces, SiLeetcode } from "react-icons/si";
 
 import { Contest } from "./api/contests/route";
 import axios from "axios";
+import { Reveal } from "@/utils/Reveal";
 
 async function getContests() {
   try {
@@ -59,65 +60,82 @@ export default async function Home() {
     const date = new Date(timestamp * 1000);
     return days[date.getDay()];
   };
-  return (
-    <>
-      <span className="text-sm font-mono text-black dark:text-green-500">
-        {day}, {date}
-      </span>
 
-      {/* Contest Table  */}
-      <div className="rounded-md border mt-4">
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead className="font-bold text-blue-500 text-xl">
-                Event
-              </TableHead>
-              <TableHead className="font-bold text-blue-500 text-xl">
-                Start Time
-              </TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {upcomingContests &&
-              upcomingContests.map((contest: Contest) => (
-                <TableRow
-                  key={contest.id}
-                  className=" transition-colors duration-300"
-                >
-                  <TableCell>
-                    <a
-                      href={contest.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hover:underline flex items-center space-x-2"
-                    >
-                      {contest.site === "codeforces" ? (
-                        <SiCodeforces className="h-6 w-6" />
-                      ) : contest.site === "codechef" ? (
-                        <SiCodechef className="h-6 w-6" />
-                      ) : (
-                        <SiLeetcode className="h-6 w-6" />
-                      )}
-                      <span>{contest.name}</span>
-                    </a>
-                  </TableCell>
-                  <TableCell className="font-mono">
-                    {contest.startTimeSeconds
-                      ? formatDate(contest.startTimeSeconds)
-                      : ""}{" "}
-                    {contest.startTimeSeconds
-                      ? getDay(contest.startTimeSeconds)
-                      : ""}{" "}
-                    {contest.startTimeSeconds
-                      ? formatTime(contest.startTimeSeconds)
-                      : "NA"}
-                  </TableCell>
-                </TableRow>
-              ))}
-          </TableBody>
-        </Table>
+  const formatDuration = (durationSeconds: number) => {
+    const hours = Math.floor(durationSeconds / 3600);
+    const minutes = Math.floor((durationSeconds % 3600) / 60);
+    const formattedHours = hours.toString().padStart(2, "0");
+    const formattedMinutes = minutes.toString().padStart(2, "0");
+    return `${formattedHours}:${formattedMinutes}`;
+  };
+
+  return (
+    <Reveal>
+      <div>
+        <span className="text-sm font-mono text-black dark:text-green-500">
+          {day}, {date}
+        </span>
+
+        {/* Contest Table  */}
+        <div className="rounded-md border mt-4">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead className="font-bold text-blue-500 text-xl">
+                  Event
+                </TableHead>
+                <TableHead className="font-bold text-blue-500 text-xl">
+                  Start Time
+                </TableHead>
+                <TableHead className="font-bold text-blue-500 text-xl">
+                  Duration
+                </TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {upcomingContests &&
+                upcomingContests.map((contest: Contest) => (
+                  <TableRow
+                    key={contest.id}
+                    className=" transition-colors duration-300"
+                  >
+                    <TableCell>
+                      <a
+                        href={contest.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:underline flex items-center space-x-2"
+                      >
+                        {contest.site === "codeforces" ? (
+                          <SiCodeforces className="h-6 w-6" />
+                        ) : contest.site === "codechef" ? (
+                          <SiCodechef className="h-6 w-6" />
+                        ) : (
+                          <SiLeetcode className="h-6 w-6" />
+                        )}
+                        <span>{contest.name}</span>
+                      </a>
+                    </TableCell>
+                    <TableCell className="font-mono">
+                      {contest.startTimeSeconds
+                        ? formatDate(contest.startTimeSeconds)
+                        : ""}{" "}
+                      {contest.startTimeSeconds
+                        ? getDay(contest.startTimeSeconds)
+                        : ""}{" "}
+                      {contest.startTimeSeconds
+                        ? formatTime(contest.startTimeSeconds)
+                        : "NA"}
+                    </TableCell>
+                    <TableCell>
+                      {formatDuration(contest.durationSeconds)}
+                    </TableCell>
+                  </TableRow>
+                ))}
+            </TableBody>
+          </Table>
+        </div>
       </div>
-    </>
+    </Reveal>
   );
 }
