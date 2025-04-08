@@ -1,4 +1,4 @@
-import { Github } from "lucide-react";
+import { Github, Linkedin } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 import { BsSuitHeartFill, BsTwitterX } from "react-icons/bs";
@@ -15,6 +15,9 @@ const Footer = () => {
         </div>
 
         <div className="flex items-center space-x-4">
+          <Link href="https://linkedin.com/in/nihalgupta0">
+            <Linkedin className="transition-colors duration-300 hover:text-blue-500" />
+          </Link>
           <Link
             href="https://github.com/behalnihal"
             className="flex items-center"
