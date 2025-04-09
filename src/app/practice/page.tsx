@@ -1,11 +1,30 @@
-import React from "react";
+import fs from "fs";
+import path from "path";
+import { parse } from "csv-parse/sync";
+import PracticePage from "./PracticePage";
 
-const page = () => {
-  return (
-    <div className="text-black dark:text-green-500 text-center font-bold text-2xl">
-      WORK IN PROGRESS
-    </div>
-  );
-};
+interface Problem {
+  problem_url: string;
+  topic: string;
+  name: string;
+}
 
-export default page;
+async function getProblems(): Promise<Problem[]> {
+  try {
+    const filePath = path.join(process.cwd(), "src", "data", "problems.csv");
+    const fileContent = fs.readFileSync(filePath, "utf-8");
+    const records = parse(fileContent, {
+      columns: true,
+      skip_empty_lines: true,
+    });
+    return records as Problem[];
+  } catch (error) {
+    console.error("Error reading problems:", error);
+    return [];
+  }
+}
+
+export default async function Page() {
+  const problems = await getProblems();
+  return <PracticePage problems={problems} />;
+}

@@ -1,0 +1,107 @@
+topic,problem_url,name
+Basics,https://codeforces.com/problemset/problem/110/A,Nearly Lucky Number
+Basics,https://cses.fi/problemset/task/1083,Missing Number
+Basics,https://cses.fi/problemset/task/1069,Repetitions
+Basics,https://codeforces.com/problemset/problem/1619/A,Square String?
+Basics,https://www.geeksforgeeks.org/practice-questions-time-complexity-analysis/,Time Complexity Analysis Practice
+Number Theory,https://codeforces.com/problemset/problem/797/A,k-Factorization
+Number Theory,https://codeforces.com/problemset/problem/1780/B,GCD of an Array
+Number Theory,https://codeforces.com/problemset/problem/1203/C,Common Divisors
+Number Theory,https://codeforces.com/problemset/problem/1475/A,A. Odd Divisor
+Number Theory,https://leetcode.com/problems/four-divisors/,Four Divisors
+Number Theory,https://www.spoj.com/problems/VECTAR8/,Primal Fear
+Number Theory,https://codeforces.com/problemset/problem/17/A,Noldbach problem
+Number Theory,https://codeforces.com/contest/776/problem/B,Sherlock and his girlfriend
+Number Theory,https://codeforces.com/problemset/problem/154/B,Colliders
+Recursion and Backtracking,https://leetcode.com/problems/n-queens/,N-Queens
+Recursion and Backtracking,https://practice.geeksforgeeks.org/problems/sum-string3151/1,Sum String
+Searching and Sorting,https://cses.fi/problemset/task/1074,Stick Lengths
+Searching and Sorting,https://codeforces.com/contest/493/problem/C,Vasya and Basketball
+Searching and Sorting,https://codeforces.com/problemset/problem/1850/D,Balanced Round
+Searching and Sorting,https://codeforces.com/contest/1848/problem/B,Monochrome
+Searching and Sorting,https://codeforces.com/problemset/problem/1690/E,Price Maximization
+C++ STL,https://leetcode.com/problems/valid-parentheses/,Valid Parentheses
+C++ STL,https://leetcode.com/problems/min-stack/,Min Stack
+C++ STL,https://codeforces.com/problemset/problem/1345/B,B. Card Constructions
+C++ STL,https://leetcode.com/problems/number-of-students-unable-to-eat-lunch/,Number of Students Unable to Eat Lunch
+C++ STL,https://leetcode.com/problems/maximum-nesting-depth-of-the-parentheses/,Maximum Nesting Depth of the Parentheses
+C++ STL,https://leetcode.com/problems/kth-largest-element-in-a-stream/,Kth Largest Element in a Stream
+C++ STL,https://codeforces.com/contest/1277/problem/B,Make Them Odd
+Prefix Sums,https://codeforces.com/contest/177/problem/D2,Encrypting Messages
+Prefix Sums,https://atcoder.jp/contests/abc179/tasks/abc179_d,Leaping Tak
+Prefix Sums,https://codeforces.com/contest/295/problem/A,Greg and Array
+Prefix Sums,https://codeforces.com/contest/276/problem/C,Little Girl and Maximum Sum
+Two Pointers,https://codeforces.com/edu/course/2/lesson/9/2/practice,Two Pointers Practice Problems
+Two Pointers,https://leetcode.com/problems/sliding-window-median/description/,Sliding Window Median
+Greedy Algorithms,https://leetcode.com/problems/jump-game/,Jump Game
+Greedy Algorithms,https://leetcode.com/problems/find-original-array-from-doubled-array/,Find Original Array From Doubled Array
+Greedy Algorithms,https://codeforces.com/problemset/problem/1840/D,Wooden Toy Festival
+Greedy Algorithms,https://codeforces.com/problemset/problem/1761/C,C. Schedule Management
+Greedy Algorithms,https://codeforces.com/problemset/problem/1628/B,B. Peculiar Movie Preferences
+Greedy Algorithms,https://codeforces.com/problemset/problem/1688/D,D. The Enchanted Forest
+Greedy Algorithms,https://codeforces.com/contest/1512/problem/E,Permutation by Sum
+Bit Manipulation,https://codeforces.com/problemset/problem/1516/B,B. AGAGA XOOORRR
+Bit Manipulation,https://codeforces.com/problemset/problem/1615/B,B. Bit Flipping
+Bit Manipulation,https://codeforces.com/problemset/problem/1601/A,A. Array Elimination
+Bit Manipulation,https://codeforces.com/problemset/problem/1395/C,C. Boboniu and Bit Operations
+Combinatorics,https://codeforces.com/problemset/problem/312/B,Archer
+Combinatorics,https://codeforces.com/problemset/problem/844/B,B. Game of the Rows
+Combinatorics,https://codeforces.com/problemset/problem/1594/E1,E1. Rubik's Cube Coloring
+Combinatorics,https://codeforces.com/problemset/problem/621/C,Wet Shark and Flowers
+Combinatorics,https://codeforces.com/problemset/problem/803,F. Coprime Subsequences
+Combinatorics,https://codeforces.com/problemset/problem/689/E,Mike and Geometry Problem
+Dynamic Programming,https://cses.fi/problemset/task/1633,Dice Combinations
+Dynamic Programming,https://cses.fi/problemset/task/1634,Minimizing Coins
+Dynamic Programming,https://cses.fi/problemset/task/1635,Coin Combinations I
+Dynamic Programming,https://codeforces.com/problemset/problem/1350/B,B. Orac and Models
+Dynamic Programming,https://codeforces.com/problemset/problem/1389/B,B. Array Walk
+Dynamic Programming,https://atcoder.jp/contests/dp/tasks/dp_i,Coins
+Dynamic Programming,https://codeforces.com/problemset/problem/1249/E,E.By Elevator or Stairs?
+Dynamic Programming,https://codeforces.com/problemset/problem/1525/D,D. Armchairs
+Dynamic Programming,https://codeforces.com/problemset/problem/888/D,D. Magic Powder
+Dynamic Programming,https://codeforces.com/problemset/problem/711/C,C. Coloring Trees
+Dynamic Programming,https://codeforces.com/problemset/problem/830/A,A. Office Keys
+Dynamic Programming,https://codeforces.com/problemset/problem/1114/D,D. Flood Fill
+Dynamic Programming,https://codeforces.com/contest/1151/problem/B,B. Dima and a Bad XOR
+Dynamic Programming,https://www.spoj.com/problems/ASSIGN/,Assignments
+Dynamic Programming,https://codeforces.com/contest/269/problem/B,B. Greenhouse Effect
+Dynamic Programming,https://codeforces.com/problemset/problem/1360/F,F. Spy-string
+Dynamic Programming,https://codeforces.com/problemset/problem/1077/F1,F1. Pictures with Kittens (easy version)
+Dynamic Programming,https://codeforces.com/contest/580/problem/D,D. Kefa and Dishes
+Dynamic Programming,https://codeforces.com/problemset/problem/895/C,C. Square Subsets
+Dynamic Programming,https://www.spoj.com/problems/COURIER/,The Courier
+Graphs and Trees,https://codeforces.com/problemset/problem/1676/G,G. White-Black Balanced Subtrees
+Graphs and Trees,https://codeforces.com/problemset/problem/1670/C,C. Where is the Pizza?
+Graphs and Trees,https://codeforces.com/problemset/problem/1139/C,C. Edgy Trees
+Graphs and Trees,https://codeforces.com/problemset/problem/954/D,D. Fight Against Traffic
+Graphs and Trees,https://codeforces.com/problemset/problem/1850/H,H. The Third Letter
+Graphs and Trees,https://codeforces.com/problemset/problem/1401/D,D. Maximum Distributed Tree
+Graphs and Trees,https://codeforces.com/contest/20/problem/C, Dijkstra?
+Graphs and Trees,https://cses.fi/problemset/task/1195,Flight Discount
+Graphs and Trees,https://codeforces.com/contest/1076/problem/D,D. Edge Deletion
+Graphs and Trees,https://codeforces.com/problemset/problem/1725/M,M. Minimum LCM
+Graphs and Trees,https://codeforces.com/contest/1307/problem/D,D. Cow and Fields
+Graphs and Trees,https://cses.fi/problemset/task/1672,Shortest Routes I
+Graphs and Trees,https://codeforces.com/contest/25/problem/C,C. Roads in Berland
+Graphs and Trees,https://www.spoj.com/problems/INGRED/,Deliver Pizza
+Graphs and Trees,http://www.spoj.com/problems/ROHAAN/,Defend The Rohaan
+Graphs and Trees,https://codeforces.com/contest/33/problem/B,B. String Problem
+DSU,https://codeforces.com/contest/17/problem/B,B. Hierarchy
+DSU,https://codeforces.com/contest/1609/problem/D,D. Social Network
+DSU,https://codeforces.com/contest/25/problem/D,D. Roads not only in Berland
+DSU,https://codeforces.com/contest/1213/problem/G,G. Path Queries
+DSU,https://codeforces.com/contest/598/problem/D,D. Igor In the Museum
+DSU,https://www.codechef.com/ICL2016/problems/ICL16A,The Chocolate Room
+DSU,https://codeforces.com/contest/1243/problem/D,D. 0-1 MST
+DP on Trees,https://codeforces.com/contest/1573/problem/C,C. Book
+DP on Trees,https://codeforces.com/contest/909/problem/E,E. Coprocessor
+DP on Trees,https://codeforces.com/contest/1674/problem/G,G. Remove Directed Edges
+DP on Trees,https://codeforces.com/contest/1693/problem/B,B. Fake Plastic Trees
+DP on Trees,https://codeforces.com/contest/1740/problem/E,E. Hanging Hearts
+DP on Trees,https://codeforces.com/contest/1856/problem/E1/,E1. PermuTree (easy version)
+Miscellanous Topics ,https://codeforces.com/contest/1630/problem/B,B. Getting Zero
+Miscellanous Topics ,https://codeforces.com/contest/1610/problem/C,C. Balanced Stone Heaps
+Miscellanous Topics ,https://codeforces.com/contest/1661/problem/C,C. Water the Trees
+Miscellanous Topics ,https://codeforces.com/contest/339/problem/D,Xenia and Bit Operations
+Miscellanous Topics ,https://codeforces.com/contest/5/problem/C,C. Longest Regular Bracket Sequence
+Miscellanous Topics ,https://codeforces.com/contest/609/problem/E,E. Minimum spanning tree for each edge

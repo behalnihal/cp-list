@@ -9,9 +9,7 @@ import { Button } from "./ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuItem,
   DropdownMenuPortal,
-  DropdownMenuSeparator,
   DropdownMenuSub,
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
@@ -21,21 +19,27 @@ import {
 const Navbar = () => {
   const { setTheme } = useTheme();
   return (
-    <div className="border-b">
-      <div className="flex h-16 items-center px-4 container mx-auto">
-        {/* Logo */}
-        <div className="font-bold text-2xl flex-1">
-          <Link href="/" className="flex items-center">
-            <span className="mr-1 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600">
-              <List size={24} />
-            </span>
-            <span className="inline bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 text-transparent bg-clip-text drop-shadow-lg">
-              CP List
-            </span>
-          </Link>
-        </div>
+    <div className="border-b flex h-16 items-center px-4 container mx-auto">
+      {/* Logo */}
+      <div className="flex-1 font-bold text-2xl">
+        <Link href="/" className="items-center">
+          <span className=" mr-1 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600">
+            <List className="inline" size={24} />
+          </span>
+          <span className="inline bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 text-transparent bg-clip-text drop-shadow-lg">
+            CP List
+          </span>
+        </Link>
+      </div>
 
-        {/* Menu */}
+      {/* Menu */}
+      <div className="flex items-center space-x-4">
+        <Link
+          href="/practice"
+          className="hover:text-blue-400 transition duration-300"
+        >
+          Practice
+        </Link>
 
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -44,14 +48,6 @@ const Navbar = () => {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="mr-16 mt-2 border dark:border-white">
-            <DropdownMenuItem className="w-full" asChild>
-              <Button variant="outline" asChild>
-                <Link href="/practice" className="w-full">
-                  Practice
-                </Link>
-              </Button>
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
             <DropdownMenuSub>
               <DropdownMenuSubTrigger>
                 <span>Theme</span>
@@ -91,27 +87,6 @@ const Navbar = () => {
             </DropdownMenuSub>
           </DropdownMenuContent>
         </DropdownMenu>
-        {/* Buttons */}
-
-        {/* <div className="flex items-center space-x-4">
-          <Link href="/practice" className="flex items-center">
-            <span className="font-mono inline bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 text-transparent bg-clip-text drop-shadow-lg">
-              Practice
-            </span>
-          </Link>
-          <button
-            className="cursor-pointer"
-            onClick={() =>
-              theme === "light" ? setTheme("dark") : setTheme("light")
-            }
-          >
-            {theme === "light" ? (
-              <Sun className="transition-colors duration-300 hover:text-blue-500" />
-            ) : (
-              <Moon className="transition-colors duration-300 hover:text-blue-500" />
-            )}
-          </button>
-        </div> */}
       </div>
     </div>
   );
