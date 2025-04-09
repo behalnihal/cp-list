@@ -51,10 +51,10 @@ const PracticePage = ({ problems }: PracticePageProps) => {
             <TableHeader>
               <TableRow>
                 <TableHead className="font-bold text-blue-500 text-xl">
-                  Topic
+                  Problem
                 </TableHead>
                 <TableHead className="font-bold text-blue-500 text-xl">
-                  Problem Link
+                  Topic
                 </TableHead>
               </TableRow>
             </TableHeader>
@@ -64,7 +64,6 @@ const PracticePage = ({ problems }: PracticePageProps) => {
                   key={index}
                   className="transition-colors duration-300"
                 >
-                  <TableCell className="font-medium">{problem.topic}</TableCell>
                   <TableCell>
                     <a
                       href={problem.problem_url}
@@ -75,6 +74,8 @@ const PracticePage = ({ problems }: PracticePageProps) => {
                       <span>{problem.name}</span>
                     </a>
                   </TableCell>
+
+                  <TableCell className="font-medium">{problem.topic}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
