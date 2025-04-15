@@ -31,6 +31,8 @@ const PracticePage = ({ problems }: PracticePageProps) => {
   const endIndex = startIndex + itemsPerPage;
   const currentProblems = problems.slice(startIndex, endIndex);
 
+  const goToLastPage = () => setCurrentPage(totalPages);
+  const goToFirstPage = () => setCurrentPage(1);
   const handlePreviousPage = () => {
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
@@ -45,15 +47,16 @@ const PracticePage = ({ problems }: PracticePageProps) => {
 
   return (
     <Reveal>
-      <div className="container mx-auto">
+      <div className="container mx-auto p-4">
+        <h1 className="text-2xl font-bold text-sky-800">Practice Problems</h1>
         <div className="rounded-md border mt-4">
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead className="font-bold text-blue-500 text-xl">
+                <TableHead className="font-bold text-sky-800 text-xl">
                   Problem
                 </TableHead>
-                <TableHead className="font-bold text-blue-500 text-xl">
+                <TableHead className="font-bold text-sky-800 text-xl">
                   Topic
                 </TableHead>
               </TableRow>
@@ -81,6 +84,7 @@ const PracticePage = ({ problems }: PracticePageProps) => {
             </TableBody>
           </Table>
           <div className="flex justify-center items-center gap-2 p-4">
+            <Button onClick={goToFirstPage}>First</Button>
             <Button
               variant="outline"
               onClick={handlePreviousPage}
@@ -88,7 +92,7 @@ const PracticePage = ({ problems }: PracticePageProps) => {
             >
               Previous
             </Button>
-            <span className="text-sm text-gray-600">
+            <span className="text-sm">
               Page {currentPage} of {totalPages}
             </span>
             <Button
@@ -98,6 +102,7 @@ const PracticePage = ({ problems }: PracticePageProps) => {
             >
               Next
             </Button>
+            <Button onClick={goToLastPage}>Last</Button>
           </div>
         </div>
       </div>

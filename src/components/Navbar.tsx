@@ -1,6 +1,6 @@
 "use client";
 
-import { Laptop, List, Menu, Moon, Sun } from "lucide-react";
+import { Flame, Laptop, Menu, Moon, Sun } from "lucide-react";
 
 import { useTheme } from "next-themes";
 import Link from "next/link";
@@ -23,12 +23,10 @@ const Navbar = () => {
       {/* Logo */}
       <div className="flex-1 font-bold text-2xl">
         <Link href="/" className="items-center">
-          <span className=" mr-1 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600">
-            <List className="inline" size={24} />
+          <span className=" mr-1">
+            <Flame className="inline" size={24} color="#104e64" />
           </span>
-          <span className="inline bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 text-transparent bg-clip-text drop-shadow-lg">
-            CP List
-          </span>
+          <span className="inline text-sky-800 drop-shadow-lg">CP List</span>
         </Link>
       </div>
 

@@ -81,13 +81,13 @@ export default async function Home() {
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead className="font-bold text-blue-500 text-xl">
+                <TableHead className="font-bold text-sky-800 text-xl">
                   Event
                 </TableHead>
-                <TableHead className="font-bold text-blue-500 text-xl">
+                <TableHead className="font-bold text-sky-800 text-xl">
                   Start Time
                 </TableHead>
-                <TableHead className="font-bold text-blue-500 text-xl">
+                <TableHead className="font-bold text-sky-800 text-xl">
                   Duration
                 </TableHead>
               </TableRow>
