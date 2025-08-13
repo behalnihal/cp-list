@@ -7,6 +7,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { SiCodechef, SiCodeforces, SiLeetcode } from "react-icons/si";
+import { Globe } from "lucide-react";
 
 import { Contest } from "./api/contests/route";
 import axios from "axios";
@@ -110,8 +111,10 @@ export default async function Home() {
                           <SiCodeforces className="h-6 w-6" />
                         ) : contest.site === "codechef" ? (
                           <SiCodechef className="h-6 w-6" />
-                        ) : (
+                        ) : contest.site === "leetcode" ? (
                           <SiLeetcode className="h-6 w-6" />
+                        ) : (
+                          <Globe className="h-6 w-6" />
                         )}
                         <span>{contest.name}</span>
                       </a>

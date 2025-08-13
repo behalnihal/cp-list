@@ -11,6 +11,12 @@ import {
 import { Reveal } from "@/utils/Reveal";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import {
+  ChevronsLeft,
+  ChevronLeft,
+  ChevronRight,
+  ChevronsRight,
+} from "lucide-react";
 
 interface Problem {
   problem_url: string;
@@ -83,26 +89,62 @@ const PracticePage = ({ problems }: PracticePageProps) => {
               ))}
             </TableBody>
           </Table>
-          <div className="flex justify-center items-center gap-2 p-4">
-            <Button onClick={goToFirstPage}>First</Button>
-            <Button
-              variant="outline"
-              onClick={handlePreviousPage}
-              disabled={currentPage === 1}
-            >
-              Previous
-            </Button>
-            <span className="text-sm">
+          <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-2 p-4 w-full">
+            <div className="flex items-center gap-2 justify-self-start">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={goToFirstPage}
+                disabled={currentPage === 1}
+                aria-label="Go to first page"
+                title="First page"
+              >
+                <ChevronsLeft />
+                <span className="hidden sm:inline">First</span>
+              </Button>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={handlePreviousPage}
+                disabled={currentPage === 1}
+                aria-label="Go to previous page"
+                title="Previous page"
+                className="min-w-[96px]"
+              >
+                <ChevronLeft />
+                <span className="hidden sm:inline">Previous</span>
+              </Button>
+            </div>
+
+            <span className="text-sm tabular-nums text-muted-foreground text-center justify-self-center min-w-[10rem]">
               Page {currentPage} of {totalPages}
             </span>
-            <Button
-              variant="outline"
-              onClick={handleNextPage}
-              disabled={currentPage === totalPages}
-            >
-              Next
-            </Button>
-            <Button onClick={goToLastPage}>Last</Button>
+
+            <div className="flex items-center gap-2 justify-self-end">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={handleNextPage}
+                disabled={currentPage === totalPages}
+                aria-label="Go to next page"
+                title="Next page"
+                className="min-w-[96px]"
+              >
+                <span className="hidden sm:inline">Next</span>
+                <ChevronRight />
+              </Button>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={goToLastPage}
+                disabled={currentPage === totalPages}
+                aria-label="Go to last page"
+                title="Last page"
+              >
+                <span className="hidden sm:inline">Last</span>
+                <ChevronsRight />
+              </Button>
+            </div>
           </div>
         </div>
       </div>

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { NextResponse } from "next/server";
 export type Contest = {
-  id: number;
+  id: string | number;
   name: string;
   type: string;
   phase: string;
@@ -120,10 +120,31 @@ export async function GET() {
         site: "leetcode",
       }));
 
+    // AtCoder contests via AtCoder Problems resources (community-maintained)
+    const atcoderResponse = await axios.get(
+      "https://kenkoooo.com/atcoder/resources/contests.json"
+    );
+    const nowSeconds = Math.floor(Date.now() / 1000);
+    const atcoderContests = atcoderResponse.data
+      .filter((c: any) => c.start_epoch_second > nowSeconds)
+      .map((c: any) => ({
+        id: c.id,
+        name: c.title,
+        type: "atcoder",
+        phase: "BEFORE",
+        frozen: false,
+        durationSeconds: c.duration_second,
+        startTimeSeconds: c.start_epoch_second,
+        relativeTimeSeconds: null,
+        url: `https://atcoder.jp/contests/${c.id}`,
+        site: "atcoder",
+      }));
+
     const contests: Contest[] = [
       ...codeforcesContests,
       ...codechefContests,
       ...leetcodeContests,
+      ...atcoderContests,
     ];
     contests.sort((a, b) => {
       if (a.startTimeSeconds && b.startTimeSeconds) {
